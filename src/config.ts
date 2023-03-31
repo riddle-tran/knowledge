@@ -18,7 +18,7 @@ interface DatabaseConf {
   connect: string
 }
 
-interface AppConfig {
+export interface AppConfig {
   server: ServerConf
   secret: SecretConf
   database: DatabaseConf

@@ -1,14 +1,13 @@
-import express from 'express'
-import bodyParser from 'body-parser'
+import { loadConfigs } from 'config'
+import server from 'server'
 
-const app = express()
+const start = async () => {
+  const cfgOptions = loadConfigs()
+  const svc = server(cfgOptions)
 
-app.use(bodyParser.json())
+  svc.listen(3000, () => {
+    console.log(`app is listening to port 3000`)
+  })
+}
 
-app.get('/', (req, res) => {
-  res.send('Hello')
-})
-
-app.listen(3000, () => {
-  console.log(`app is listening to port 3000`)
-})
+start()
